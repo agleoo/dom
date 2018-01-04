@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			.box {
+				width: 400px;
+				/*height: auto;*/
+				margin: 0 auto;
+			}
+			
+			.clearfiex:after {
+				display: block;
+				content: '';
+				clear: both;
+			}
+			
+			.list li {
+				width: 25%;
+				box-sizing: border-box;
+				text-align: center;
+				line-height: 30px;
+				border: solid blue 1px;
+				float: left;
+			}
+			
+			.content div {
+				width: 400px;
+				height: 300px;
+				font-size:50px;
+				text-align:center;
+				line-height: 300px;
+				border: solid yellow 1px;
+				box-sizing: border-box;
+				position: absolute;
+				display: none;
+			}
+			
+			.active {
+				background: blue;
+			}
+			
+			.content .show {
+				display: block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="box clearfiex">
+			<div class="list">
+				<ul class="clearfiex">
+					<li class="active">1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+				</ul>
+			</div>
+			<div class="content">
+				<div class="show">1</div>
+				<div>2</div>
+				<div>3</div>
+				<div>4</div>
+			</div>
+		</div>
+	</body>
+	<script>
+		[...document.querySelectorAll(".list li")].find((x, y) => {
+			x['onclick'] = () => {
+				[...document.querySelectorAll(".content div")].find(d => {
+					d.className = ""
+				});
+				[...document.querySelectorAll(".list li")].find(d => {
+					d.className = ""
+				});
+				[...document.querySelectorAll(".content div")][y].className = "show" 
+//				[...document.querySelectorAll(".list li")][y].className = "active"
+			}
+		})
+	</script>
+
+</html>
